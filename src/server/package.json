@@ -1,0 +1,47 @@
+{
+  "name": "assign",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "jest",
+    "babel-node": "babel-node --presets='@babel/preset-env'",
+    "dev": "nodemon --exec npm run babel-node -- ./index.js"
+  },
+  "keywords": [
+    "mern",
+    "node.js",
+    "express",
+    "react"
+  ],
+  "author": "Mudassar Ali",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.15.4",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.4.1",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.9"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/node": "^7.15.4",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.6",
+    "@types/jest": "^27.0.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^27.2.4",
+    "nodemon": "^2.0.13",
+    "superagent": "^6.1.0",
+    "supertest": "^6.1.6"
+  }
+}
