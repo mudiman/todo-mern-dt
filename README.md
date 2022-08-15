@@ -1,30 +1,3 @@
-<div id="top"></div>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-<!-- PROJECT LOGO -->
-<br />
 <div align="center">
 
   <h3 align="center">Todo MERN with docker and test</h3>
@@ -64,7 +37,6 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -108,20 +80,17 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/mudiman/todo-mern-dt.git
    ```
-3. Install NPM packages for server
+2. Install NPM packages for server
    ```sh
    cd src/server/ && npm install
    ```
-4. Rename .env.sample to .env
-   ```js
-   const API_KEY = "ENTER YOUR API";
-   ```
-5. Install NPM packages for client
+3. Rename .env.sample to .env and update configuration
+
+4. Install NPM packages for client
    ```sh
    cd src/client/ && npm install
    ```
@@ -185,17 +154,5 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 Mudassar Ali - [@your_twitter](https://twitter.com/mudassarali) - mudassar.ali@gmail.com
 
 Project Link: [https://github.com/mudiman/todo-mern-dt](https://github.com/mudiman/todo-mern-dt)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
-
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-- [GitHub Pages](https://pages.github.com)
-- [Font Awesome](https://fontawesome.com)
-- [React Icons](https://react-icons.github.io/react-icons/search)
 
 <p align="right">(<a href="#top">back to top</a>)</p>

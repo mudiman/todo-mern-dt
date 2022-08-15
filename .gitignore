@@ -119,3 +119,6 @@ dist
 .history/*
 
 docker/data/*
+
+.DS_Store
+src/.DS_Store
