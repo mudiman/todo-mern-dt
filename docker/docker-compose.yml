@@ -60,7 +60,7 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: root
       ME_CONFIG_MONGODB_URL: mongodb://root:root@mongo:27017/
     links: 
-        - mongodb:mongodb
+        - mongo:mongo
     restart: unless-stopped
     networks:
       - app
