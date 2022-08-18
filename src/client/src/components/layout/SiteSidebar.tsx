@@ -11,9 +11,7 @@ import { Link } from "react-router-dom";
 const SiteSidebar = () => {
     return (
         <Sider className="site-layout-background" width={200}  collapsible>
-            <Menu defaultOpenKeys={['accounts']} 
-            // defaultSelectedKeys={[this.state.selectedAccount.id ? this.state.selectedAccount.id.toString() : '']}
-                theme="dark" mode="inline">
+            <Menu theme="dark" mode="inline">
                 <SubMenu key="accounts" icon={<UserOutlined />} title="Todos">
                     <Menu.Item>
                         <Link to="/todo/index">List</Link>

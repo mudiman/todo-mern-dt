@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from "react-router-dom"
 import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
@@ -8,8 +8,10 @@ import { useStore } from '../store/authStore';
 
 
 const MainRoute = () => {
-    const { token } = useStore();
-
+    const { token, getToken } = useStore();
+    useEffect(() => {
+        getToken();
+    }, [])
     if (!token) return <LoginPage />
 
     return ( 

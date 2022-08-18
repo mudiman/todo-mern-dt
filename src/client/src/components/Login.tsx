@@ -1,5 +1,6 @@
 import { Button, Checkbox, Form, Input } from 'antd';
 import React from 'react';
+import { toast } from 'react-toastify';
 import { useStore } from '../store/authStore';
 
 const Login: React.FC = () => {
@@ -11,7 +12,7 @@ const Login: React.FC = () => {
   };
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
+    toast.success('Failed:', errorInfo);
   };
 
   return (
