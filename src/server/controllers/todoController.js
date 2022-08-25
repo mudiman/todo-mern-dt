@@ -6,7 +6,7 @@ const todoController = {};
 // Post new todo
 todoController.store = async (req, res) => {
   todoModel
-    .find({ name: req.body.name })
+    .find({ body: req.body.body })
     .exec()
     .then((todo) => {
       if (todo.length >= 1) {
@@ -14,10 +14,11 @@ todoController.store = async (req, res) => {
           message: "todo Exists",
         });
       } else {
-        let newTodo =  todoModel.create({
-          name: req.body.name,
+        todoModel.create({
+          body: req.body.body,
+        }).then((newTodo) => {
+          return res.status(httpStatus.CREATED).json({ data: { newTodo } });
         });
-        return res.status(httpStatus.CREATED).json({ data: { newTodo } });
       }
     });
 };
@@ -54,7 +55,11 @@ todoController.findOne = async (req, res) => {
 // Update todo By ID
 todoController.update = async (req, res) => {
   try {
-    let todo = await todoModel.findById(req.params.todoId);
+    let todo = await todoModel.findOneAndUpdate(
+      { _id: req.params.id },
+      { ...req.body, updatedAt: new Date(0) },
+      { new: true }
+    );
     if (!todo) {
       return res
         .status(httpStatus.BAD_REQUEST)
@@ -82,5 +87,6 @@ todoController.delete = async (req, res) => {
     return res.status(500).json({ error: error.toString() });
   }
 };
+
 
 export default todoController;

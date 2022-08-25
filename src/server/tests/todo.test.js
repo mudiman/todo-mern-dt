@@ -2,6 +2,7 @@ import app from "../app";
 import mongoose from "mongoose";
 import supertest from "supertest";
 import { todoModel } from "../models/todo";
+import appConfig from "../config/app";
 
 beforeAll((done) => {
   //Todo: Should be separate test db with seed data
@@ -9,8 +10,8 @@ beforeAll((done) => {
     "mongodb://localhost:27017/test",
     {
       authSource: "admin",
-      user: process.env.MONGO_USER,
-      pass: process.env.MONGO_PASSWORD,
+      user: appConfig.user,
+      pass: appConfig.pass,
       useNewUrlParser: true,
       useUnifiedTopology: true,
     },

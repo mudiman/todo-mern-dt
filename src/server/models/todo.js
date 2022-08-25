@@ -3,16 +3,15 @@ import mongoose from "mongoose";
 const schema = mongoose.Schema;
 
 const todoSchema = new schema({
-  name: {
+  body: {
     type: String,
     required: true,
   },
-
-  status: {
-    type: String,
-    required: false,
-  },
-});
+  completed: {
+    type: Boolean,
+    default: false
+  }
+}, { timestamps: true });
 
 const todoModel = mongoose.model("todo", todoSchema);
 

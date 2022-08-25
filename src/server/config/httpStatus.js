@@ -3,7 +3,7 @@ const httpStatus = {
     SWITCHING_PROTOCOLS: "101",
     PROCESSING: "102",
     OK: "200",
-    CREATED: "201",
+    CREATED: 201,
     ACCEPTED: "202",
     NON_AUTHORITATIVE_INFORMATION: "203",
     NO_CONTENT: "204",

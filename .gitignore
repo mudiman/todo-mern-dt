@@ -123,3 +123,4 @@ docker/data/*
 .DS_Store
 src/.DS_Store
 **/node_modules
+**/*log
