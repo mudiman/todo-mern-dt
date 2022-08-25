@@ -1,4 +1,4 @@
-FROM node:14.17-alpine
+FROM node:16.16.0-alpine
 
 LABEL maintainer="mudassar.ali@gmail.com"
 
@@ -8,9 +8,12 @@ ENV DIR /app
 RUN mkdir -p ${DIR}
 WORKDIR ${DIR} 
 
+RUN npm install --global pm2 yarn
+
 COPY ${SOURCE_DIR}/package.json /app
-RUN npm install
+COPY ${SOURCE_DIR}/yarn.lock /app
+RUN yarn install --frozen-lockfile --production
 COPY ${SOURCE_DIR}/ ${DIR} 
 
 EXPOSE 8080
-CMD npm start
+CMD [ "pm2-runtime", "start", "npm", "--", "start" ]
