@@ -25,7 +25,7 @@ export function makeServer({ environment = 'development' } = {}) {
       server.createList("todo", 10);
     },
     routes() {
-      this.post('/login', (schema, request) => {
+      this.post('/api/auth/login', (schema, request) => {
         let attrs = JSON.parse(request.requestBody);
         if (attrs.username == "admin@admin.com" && attrs.password == 'password') {
           return new Response(200, { some: 'header' }, { token: [ 'admin-token'] });
@@ -34,7 +34,8 @@ export function makeServer({ environment = 'development' } = {}) {
         }    
      });
       this.get('/api/todos', (schema, request) => {
-        return schema.all("todo");      
+        const data: any = schema.all("todo");
+        return data;      
       });
       this.get('/api/todos/:id', (schema, request) => {
         let keyid = request.params.id;        

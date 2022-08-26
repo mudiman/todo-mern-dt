@@ -1,6 +1,7 @@
 import create from "zustand";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import appConfig from "../config/app";
 
 
 interface AuthState {
@@ -20,10 +21,13 @@ export const useStore = create<AuthState>((set) => ({
   token: '',
   // methods for manipulating state
   login: async (username, password) => {
-    const response = await fetch('/login', {
+    const response = await fetch(`${appConfig.apiHost}/api/auth/login`, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
-        username: username,
+        email: username,
         password: password
       }),
     })
@@ -33,7 +37,7 @@ export const useStore = create<AuthState>((set) => ({
       set({ token: login.token })
       sessionStorage.setItem('token', login.token);
     } else {
-      toast.success('Login failled');
+      toast.success('Login failed');
     }
   },
   logout: () => {

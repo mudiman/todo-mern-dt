@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { makeServer } from './server';
 
 if (process.env.NODE_ENV === 'development') {
-  makeServer({ environment: 'development' });
+  //makeServer({ environment: 'development' });
 }
 
 const root = ReactDOM.createRoot(
