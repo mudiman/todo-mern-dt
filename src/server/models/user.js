@@ -8,8 +8,7 @@ const userSchema = new schema({
     first_name: { type: String, default: null },
     last_name: { type: String, default: null },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    token: { type: String },
+    password: { type: String, required: true, select: false },
 }, { timestamps: true });
 
 userSchema.pre("save", function (next) {
@@ -42,6 +41,15 @@ userSchema.methods.comparePassword = function (candidatePassword, cb) {
         cb(null, isMatch);
     });
 };
+
+
+userSchema.set('toJSON', {
+    transform: function(doc, ret, opt) {
+        delete ret['password']
+        return ret
+    }
+})
+
 const userModel = mongoose.model("user", userSchema);
 
 export { userModel };

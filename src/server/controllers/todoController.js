@@ -1,4 +1,7 @@
+import { validationResult } from "express-validator";
+
 import httpStatus from "../config/httpStatus.js";
+import { apiResponseFormatter } from "../helpers/utils.js";
 import { todoModel } from "../models/todo.js";
 
 const todoController = {};
@@ -10,14 +13,13 @@ todoController.store = async (req, res) => {
     .exec()
     .then((todo) => {
       if (todo.length >= 1) {
-        return res.status(httpStatus.CONFLICT).json({
-          message: "todo Exists",
-        });
+        return res.status(httpStatus.CONFLICT).json(apiResponseFormatter("todo Exists"));
       } else {
         todoModel.create({
           body: req.body.body,
+          user: req.user.user_id
         }).then((newTodo) => {
-          return res.status(httpStatus.CREATED).json({ data: { newTodo } });
+          return res.status(httpStatus.CREATED).json(newTodo);
         });
       }
     });
@@ -26,7 +28,8 @@ todoController.store = async (req, res) => {
 // Get All todos
 todoController.findAll = async (req, res) => {
   try {
-    const todos = await todoModel.find();
+    const todos = await todoModel.find({user: req.user.user_id}).populate('user');
+    if (todos.length == 0) return res.status(httpStatus.NOT_FOUND).json(apiResponseFormatter("Todo not found"));
     return res.json(todos);
   } catch (error) {
     return res
@@ -38,7 +41,7 @@ todoController.findAll = async (req, res) => {
 // Get todo By ID
 todoController.findOne = async (req, res) => {
   try {
-    const todo = await todoModel.findById(req.params.id);
+    const todo = await todoModel.findById(req.params.id).where({user: req.user.user_id});
     if (!todo) {
       return res
         .status(httpStatus.BAD_REQUEST)
@@ -76,11 +79,11 @@ todoController.update = async (req, res) => {
 // Delete todo By ID
 todoController.delete = async (req, res) => {
   try {
-    let todo = await todoModel.findByIdAndRemove(req.params.todoId);
+    let todo = await todoModel.findByIdAndRemove(req.params.id);
     if (!todo) {
       return res
         .status(httpStatus.BAD_REQUEST)
-        .json({ message: "Todo not found" });
+        .json(apiResponseFormatter("Todo not found"));
     }
     return res.json({ message: "Todo deleted successfully!" });
   } catch (error) {

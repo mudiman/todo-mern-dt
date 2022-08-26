@@ -10,7 +10,6 @@ import { fileURLToPath } from 'url';
 
 import todoRoutes from "./routes/api/todoRoutes.js";
 import requireJsonContent from "./middlewares/requireJsonContent.js";
-import apiTransformer from "./middlewares/apiTransformer.js";
 import rateLimit from "express-rate-limit";
 import apiDoc from "./api/apiDoc.js";
 import authRoutes from "./routes/api/authRoutes.js";
@@ -55,7 +54,6 @@ app.use(cors({
   origin: 'http://localhost:3000'
 }));
 app.use(requireJsonContent);
-//app.use(apiTransformer);
 
 app.use('/api/auth', authRoutes);
 app.use('/api/todos', todoRoutes);

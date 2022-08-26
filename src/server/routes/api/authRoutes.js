@@ -1,4 +1,6 @@
 import express from "express";
+import { body } from "express-validator";
+
 import authController from "../../controllers/AuthController.js";
 
 const authRoutes = express.Router();
@@ -25,9 +27,11 @@ const authRoutes = express.Router();
  *         email:
  *           type: string
  *           description: Email
+ *           required: true
  *         password:
  *           type: string
  *           description: password encrypted
+ *           required: true
  *       example:
  *         first_name: Mudassar
  *         last_name: Ali
@@ -38,7 +42,7 @@ const authRoutes = express.Router();
  /**
   * @swagger
   * tags:
-  *   name: User
+  *   name: Users
   *   description: Authentication api
   */
  
@@ -56,7 +60,7 @@ const authRoutes = express.Router();
  *           schema:
  *             $ref: '#/components/schemas/User'
  *     responses:
- *       200:
+ *       201:
  *         description: The user was successfully signup
  *         content:
  *           application/json:
@@ -65,7 +69,7 @@ const authRoutes = express.Router();
  *       500:
  *         description: Some server error
  */
- authRoutes.post("/signup", authController.signup);
+ authRoutes.post("/signup",  body('email').isEmail(), body('password').isLength({ min: 5 }), authController.signup);
 
 /**
  * @swagger
@@ -98,7 +102,7 @@ const authRoutes = express.Router();
  *      500:
  *        description: Some error happened
  */
- authRoutes.post("/login", authController.login);
+ authRoutes.post("/login", body('email').isEmail(), body('password').isLength({ min: 5 }), authController.login);
 
 
 

@@ -5,17 +5,17 @@ networks:
 
 services:
 
-nginx:
-  build: ./nginx
-  links:
-    - server:server
-    - client:client
-  ports:
-    - "80:80"
-    - "443:443"
-  volumes:
-    - /etc/nginx/psw:/etc/nginx/psw
-    - /etc/nginx/ssl:/etc/nginx/ssl
+  # nginx:
+  #   build: ./nginx
+  #   links:
+  #     - server:server
+  #     - client:client
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - /etc/nginx/psw:/etc/nginx/psw
+  #     - /etc/nginx/ssl:/etc/nginx/ssl
 
     
   # server:

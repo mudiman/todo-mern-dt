@@ -1,6 +1,9 @@
 import express from "express";
-import { verifyToken } from "../../controllers/AuthController.js";
+import { body } from "express-validator";
+
 import todoController from "../../controllers/todocontroller.js";
+import auth from "../../middlewares/auth.js";
+
 
 const todoRoutes = express.Router();
 
@@ -16,15 +19,15 @@ const todoRoutes = express.Router();
  *       properties:
  *         id:
  *           type: string
- *           description: The auto-generated id of the book
+ *           description: The auto-generated id of the todo
  *         body:
  *           type: string
  *           description: The body description
+ *           required: true
  *         completed:
  *           type: boolean
  *           description: Task completed
  *       example:
- *         id: d5fE_asz
  *         body: Deadlift today
  *         completed: false
  */
@@ -32,7 +35,7 @@ const todoRoutes = express.Router();
  /**
   * @swagger
   * tags:
-  *   name: Todo
+  *   name: Todos
   *   description: The Todo managing API
   */
  
@@ -42,6 +45,8 @@ const todoRoutes = express.Router();
  * /api/todos:
  *   get:
  *     summary: Returns the list of all the todos
+ *     security: 
+ *      - bearerAuth: []
  *     tags: [Todos]
  *     responses:
  *       200:
@@ -52,14 +57,18 @@ const todoRoutes = express.Router();
  *               type: array
  *               items:
  *                 $ref: '#/components/schemas/Todo'
+ *       404:
+ *         description: The todo was not found
  */
-todoRoutes.get("/", verifyToken, todoController.findAll);
+todoRoutes.get("/", auth.verifyToken, todoController.findAll);
 
 /**
  * @swagger
- * /api/todo/{id}:
+ * /api/todos/{id}:
  *   get:
  *     summary: Get the todo by id
+ *     security: 
+ *      - bearerAuth: []
  *     tags: [Todos]
  *     parameters:
  *       - in: path
@@ -79,13 +88,15 @@ todoRoutes.get("/", verifyToken, todoController.findAll);
  *         description: The todo was not found
  */
 
-todoRoutes.get("/:id", verifyToken, todoController.findOne);
+todoRoutes.get("/:id", auth.verifyToken, todoController.findOne);
 
 /**
  * @swagger
  * /api/todos:
  *   post:
  *     summary: Create a new todo
+ *     security: 
+ *      - bearerAuth: []
  *     tags: [Todos]
  *     requestBody:
  *       required: true
@@ -94,7 +105,7 @@ todoRoutes.get("/:id", verifyToken, todoController.findOne);
  *           schema:
  *             $ref: '#/components/schemas/Todo'
  *     responses:
- *       200:
+ *       201:
  *         description: The todo was successfully created
  *         content:
  *           application/json:
@@ -103,13 +114,15 @@ todoRoutes.get("/:id", verifyToken, todoController.findOne);
  *       500:
  *         description: Some server error
  */
- todoRoutes.post("/", verifyToken, todoController.store);
+ todoRoutes.post("/", auth.verifyToken, body('body').isLength({ min: 5 }), todoController.store);
 
 /**
  * @swagger
  * /api/todos/{id}:
  *  put:
  *    summary: Update the todo by the id
+ *    security: 
+ *      - bearerAuth: []
  *    tags: [Todos]
  *    parameters:
  *      - in: path
@@ -136,13 +149,15 @@ todoRoutes.get("/:id", verifyToken, todoController.findOne);
  *      500:
  *        description: Some error happened
  */
-todoRoutes.put("/:id", verifyToken, todoController.update);
+todoRoutes.put("/:id", auth.verifyToken, todoController.update);
 
 /**
  * @swagger
  * /api/todos/{id}:
  *   delete:
  *     summary: Remove the todo by id
+ *     security: 
+ *      - bearerAuth: []
  *     tags: [Todos]
  *     parameters:
  *       - in: path
@@ -153,11 +168,11 @@ todoRoutes.put("/:id", verifyToken, todoController.update);
  *         description: The todo id
  * 
  *     responses:
- *       200:
+ *       202:
  *         description: The todo was deleted
  *       404:
  *         description: The todo was not found
  */
-todoRoutes.delete("/:id", verifyToken, todoController.delete);
+todoRoutes.delete("/:id", auth.verifyToken, todoController.delete);
 
 export default todoRoutes;

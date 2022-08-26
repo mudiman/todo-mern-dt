@@ -15,15 +15,33 @@ const apiDoc = {
         url: "https://mudiman.github.io", // your website
       },
     },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        }
+      }
+    },
+    responses: [{
+      403: {
+        description: "Unauthorized"
+      }
+    }],
     servers: [
       {
-        url: `https://localhost:${appConfig.port}`
+        url: `http://localhost:${appConfig.port}`,
+        description: `${appConfig.env} server`,
       }
     ]
   },
   apis: ["./routes/api/*.js"],
   swaggerOptions: {
-    url: 'http://petstore.swagger.io/v2/swagger.json'
+    urls: [{
+      url: `http://localhost:${appConfig.port}/api-docs/swagger.json`,
+      name: 'v1'
+    }]
   }
 };
 
