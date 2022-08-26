@@ -46,7 +46,8 @@
 
 Todo sample app
 
-Sample todo full stack app with react and express and some test docker and github action workflow
+Sample todo full stack app with react.js and express.js and some test, docker and github action workflow
+It includes all major production grade application packages
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -57,9 +58,13 @@ This section should list any major frameworks/libraries used to bootstrap your p
 - [React.js](https://reactjs.org/)
 - [Express](https://expressjs.com/)
 - [Jest](https://jestjs.io/)
+- [MirageJs](https://miragejs.com/)
 - [React Router](https://reactrouter.com/)
 - [Docker](https://www.docker.com/)
 - [MongoDB](https://www.mongodb.com/)
+- [PM2](https://pm2.keymetrics.io/)
+- [Mocha](https://mochajs.org/)
+- [Chai](https://www.chaijs.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -75,6 +80,7 @@ To get a local copy up and running follow these simple example steps.
 This is an example of how to list things you need to use the software and how to install them.
 
 - npm
+- yarn
 - node
 - docker
 
@@ -86,13 +92,13 @@ This is an example of how to list things you need to use the software and how to
    ```
 2. Install NPM packages for server
    ```sh
-   cd src/server/ && npm install
+   cd src/server/ && yarn install
    ```
 3. Rename .env.sample to .env and update configuration
 
 4. Install NPM packages for client
    ```sh
-   cd src/client/ && npm install
+   cd src/client/ && yarn install
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -101,8 +107,8 @@ This is an example of how to list things you need to use the software and how to
 
 ## Usage
 
-To run client. cd src/client and then npm start
-To run server. cd src/server and then npm start
+To run client. cd src/client and then yarn start
+To run server. cd src/server and then yarn start
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

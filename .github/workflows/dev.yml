@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.17.5]
+        node-version: [16.16.0]
 
     steps:
       - name: Checkout repository
@@ -40,7 +40,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
           aws-region: eu-west-2
 
-      - name: Build, tag, and push nginx php-fpm 7.3 xdebug
+      - name: Build, tag, and push node image
         env:
           ECR_REGISTRY: 
           ECR_REPOSITORY: 
@@ -83,7 +83,7 @@ buildApp:
         aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
         aws-region: eu-west-2
 
-    - name: Build, tag, and push nginx php-fpm 7.3 xdebug
+    - name: Build, tag, and push client image
       env:
         ECR_REGISTRY: 
         ECR_REPOSITORY: 

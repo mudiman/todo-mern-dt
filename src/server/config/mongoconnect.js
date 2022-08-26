@@ -21,7 +21,7 @@ mongoose.connection.on("close", () => {
 });
 
 mongoose.connection.on("error", (error) => {
-  console.og("MongoDB ERROR: " + error);
+  console.log("MongoDB ERROR: " + error);
   process.exit(1);
 });
 
