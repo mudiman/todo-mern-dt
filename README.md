@@ -1,6 +1,6 @@
 <div align="center">
 
-  <h3 align="center">Todo MERN with docker and test</h3>
+  <h3 align="center">Todo MERN</h3>
 
   <p align="center">
     <br />
@@ -106,9 +106,25 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 
 ## Usage
-
-To run client. cd src/client and then yarn start
-To run server. cd src/server and then yarn start
+### Client
+```
+cd src/client
+yarn install
+yarn start
+```
+### Server
+```
+cd src/server
+yarn install
+make copy of .env.sample as .env and update the config
+yarn start
+```
+### Using Docker
+```
+docker-compose build
+docker-compose up -d
+Note: Curring dockerfile is setup for production mode so it will not watch for changes. If want to make changes run directly or modify dockerfile
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -118,8 +134,7 @@ To run server. cd src/server and then yarn start
 
 - [x] Add Changelog
 - [x] Add back to top links
-- [] Add Additional Templates w/ Examples
-- [] Add "components" document to easily copy & paste sections of the readme
+- [] Add Dockerfile.dev for local developerment with support to watch for changes
 - [] Multi-language Support
   - [] Chinese
   - [] Spanish
