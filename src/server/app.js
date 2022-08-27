@@ -22,7 +22,7 @@ const app = express();
 
 const specs = swaggerJsDoc(apiDoc);
 
-app.get("/api-docs/swagger.json", function(req, res) {
+app.get("/api-docs/swagger.json", function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.send(specs);
 });
@@ -47,12 +47,25 @@ const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100 // limit each IP to 100 requests per windowMs
 });
-
-app.use(helmet());
 app.use(limiter);
+
+app.use(helmet.hidePoweredBy());
+app.use(
+  helmet.dnsPrefetchControl({
+    allow: true,
+  })
+);
+app.use(helmet.noSniff());
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"]
+  }
+}));
+
 app.use(cors({
   origin: 'http://localhost:3000'
 }));
+
 app.use(requireJsonContent);
 
 app.use('/api/auth', authRoutes);
