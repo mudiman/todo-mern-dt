@@ -50,17 +50,6 @@ const limiter = rateLimit({
 app.use(limiter);
 
 app.use(helmet.hidePoweredBy());
-app.use(
-  helmet.dnsPrefetchControl({
-    allow: true,
-  })
-);
-app.use(helmet.noSniff());
-app.use(helmet.contentSecurityPolicy({
-  directives: {
-    defaultSrc: ["'self'"]
-  }
-}));
 
 app.use(cors({
   origin: 'http://localhost:3000'

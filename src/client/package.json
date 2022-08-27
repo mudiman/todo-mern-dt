@@ -19,6 +19,7 @@
     "react-scripts": "^2.1.3",
     "react-toastify": "9.0.3",
     "typescript": "^4.7.4",
+    "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4",
     "zustand": "^4.0.0"
   },
