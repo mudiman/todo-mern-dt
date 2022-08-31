@@ -12,9 +12,9 @@ const SiteHeader = () => {
     { label: 'TodoApp', key: 'todolist' },
     {
       label: 'Account',
-      key: 'submenu',
+      key: 'account',
       children: [{
-        label: 'logout', key: 'submenu-item-1', onClick: () => {
+        label: 'logout', key: 'logout', onClick: () => {
           logout()
         }
       }],
@@ -23,22 +23,9 @@ const SiteHeader = () => {
 
   return (
     <Header>
-        <title>Todo App</title>
-        <meta name="description" content="Todo management app" />
-        <meta name="theme-color" content="#008f68" />
-        <meta
-          http-equiv="Content-Security-Policy"
-          content="
- connect-src 'self';
- default-src 'none';
- img-src 'self';
- manifest-src 'self';
- script-src-elem 'self';
- style-src-elem 'self';
- ">
-      <div className="logo" />
-      <Menu mode="horizontal" items={items}>
-      </Menu>
+        <div className="logo" />
+        <Menu mode="horizontal" items={items}>
+        </Menu>
     </Header>
   );
 }

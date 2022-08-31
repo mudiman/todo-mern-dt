@@ -1,8 +1,8 @@
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 
 const appConfig = {
-    apiHost: "http://localhost:8080",
-    nonce: new Buffer(uuid()).toString('base64');
+    apiHost: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : "http://localhost:8080",
+    nonce: Buffer.from(uuidv4()).toString('base64')
 }
 
 export default appConfig;

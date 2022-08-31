@@ -27,6 +27,7 @@ export const useStore = create<TodoState>((set) => ({
       },
     })
     const latestTodos = await response.json();
+    console.info('latestTodos', latestTodos)
     set({ todos: latestTodos })
     return latestTodos;
   },

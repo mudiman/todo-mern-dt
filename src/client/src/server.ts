@@ -1,25 +1,25 @@
-import { createServer, Factory, Model, Response } from 'miragejs';
+import { Collection, createServer, Factory, Model, Response } from 'miragejs';
 import { faker } from '@faker-js/faker';
-import {Todo} from './model/Todo';
+import { Todo } from './model/Todo';
 
 export function makeServer({ environment = 'development' } = {}) {
   let server = createServer({
     environment,
     models: {
-      todo: Model.extend<Partial<Todo>>({})    ,
+      todo: Model.extend<Partial<Todo>>({}),
     },
-    factories: {      
-      todo: Factory.extend<Partial<Todo>>({    
+    factories: {
+      todo: Factory.extend<Partial<Todo>>({
         id(i) {
           return faker.random.alpha(10);
-        }, 
+        },
         body() {
           return faker.lorem.sentence();
         },
         completed() {
-          return false      
-        } 
-      })    
+          return false
+        }
+      })
     },
     seeds(server) {
       server.createList("todo", 10);
@@ -27,24 +27,24 @@ export function makeServer({ environment = 'development' } = {}) {
     routes() {
       this.post('/api/auth/login', (schema, request) => {
         let attrs = JSON.parse(request.requestBody);
-        if (attrs.username == "admin@admin.com" && attrs.password == 'password') {
-          return new Response(200, { some: 'header' }, { token: [ 'admin-token'] });
+        if (attrs.email == "admin@admin.com" && attrs.password == 'password') {
+          return new Response(200, { some: 'header' }, { token: ['admin-token'] });
         } else {
-          return new Response(401, { some: 'header' }, { errors: [ 'unauthorized'] });
-        }    
-     });
+          return new Response(401, { some: 'header' }, { errors: ['unauthorized'] });
+        }
+      });
       this.get('/api/todos', (schema, request) => {
         const data: any = schema.all("todo");
-        return data;      
+        return data.models;
       });
       this.get('/api/todos/:id', (schema, request) => {
-        let keyid = request.params.id;        
-        return schema.findBy("todo", {id: keyid})  
+        let keyid = request.params.id;
+        return schema.findBy("todo", { id: keyid })
       });
       this.post('/api/todos', (schema, request) => {
-         let attrs = JSON.parse(request.requestBody);
-         schema.create("todo", attrs);        
-         return schema.all("todo");      
+        let attrs = JSON.parse(request.requestBody);
+        schema.create("todo", attrs);
+        return schema.all("todo");
       });
       // this.put('/api/todos/:id', (schema, request: any) => {
       //   let attrs = JSON.parse(request.requestBody);
@@ -53,11 +53,11 @@ export function makeServer({ environment = 'development' } = {}) {
       //   return post?.update(attrs);
       // });
       this.delete('/api/todos/:id', (schema, request) => {
-         let keyid = request.params.id;        
-         let post = schema.findBy("todo", {id: keyid})       
-         if(post !== null)          
-              post.destroy();       
-         return schema.all("todo");      
+        let keyid = request.params.id;
+        let post = schema.findBy("todo", { id: keyid })
+        if (post !== null)
+          post.destroy();
+        return schema.all("todo");
       });
     },
   });
