@@ -93,13 +93,13 @@ This is an example of how to list things you need to use the software and how to
    ```
 2. Install NPM packages for server
    ```sh
-   cd src/server/ && yarn install
+   cd apps/api/server/ && yarn install
    ```
 3. Rename .env.sample to .env and update configuration
 
 4. Install NPM packages for client
    ```sh
-   cd src/client/ && yarn install
+   cd apps/web/ && yarn install
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -125,6 +125,13 @@ make copy of .env.sample as .env and update the config
 yarn start
 ```
 
+### Using Turbo build command
+```
+on root run below command which run all dev command in sub apps
+yarn run dev
+yarn run lint // to check for linking issue
+yarn run format // to format code
+```
 ### Using Docker
 
 ```
