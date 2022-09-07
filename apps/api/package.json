@@ -1,0 +1,59 @@
+{
+  "name": "todo-api-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "mocha ./tests/*.spec.js",
+    "test:watch": "mocha --watch ./tests/*.spec.js",
+    "babel-node": "babel-node --presets='@babel/preset-env'",
+    "dev": "nodemon --exec npm run babel-node -- ./index.js"
+  },
+  "keywords": [
+    "mern",
+    "node.js",
+    "express",
+    "react"
+  ],
+  "author": "Mudassar Ali",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.15.4",
+    "async": "^3.2.4",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "debug": "^4.3.4",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-rate-limit": "^5.4.1",
+    "express-validator": "^6.14.2",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.9",
+    "morgan": "^1.10.0",
+    "rotating-file-stream": "^3.0.4",
+    "swagger-jsdoc": "^6.2.5",
+    "swagger-ui-express": "^4.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/node": "^7.15.4",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.6",
+    "@types/jest": "^27.0.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.13",
+    "proxyquire": "^2.1.3",
+    "sinon": "^14.0.0",
+    "superagent": "^6.1.0",
+    "supertest": "^6.1.6"
+  }
+}

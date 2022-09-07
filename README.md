@@ -46,7 +46,7 @@
 
 Todo sample app
 
-Sample todo full stack app with react.js and express.js and some test, docker and github action workflow
+This is mono repo project build using Turborepo. Sample todo full stack app with react.js and express.js and some test, docker and github action workflow
 It includes all major production grade application packages
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -55,6 +55,7 @@ It includes all major production grade application packages
 
 This section should list any major frameworks/libraries used to bootstrap your project.
 
+- [Turborepo](https://turborepo.org/)
 - [React.js](https://reactjs.org/)
 - [Express](https://expressjs.com/)
 - [Jest](https://jestjs.io/)
@@ -106,20 +107,26 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 
 ## Usage
+
 ### Client
+
 ```
 cd src/client
 yarn install
 yarn start
 ```
+
 ### Server
+
 ```
 cd src/server
 yarn install
 make copy of .env.sample as .env and update the config
 yarn start
 ```
+
 ### Using Docker
+
 ```
 docker-compose build
 docker-compose up -d

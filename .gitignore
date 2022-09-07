@@ -124,3 +124,8 @@ data/*
 src/.DS_Store
 **/node_modules
 **/*log
+
+.turbo
+build/**
+dist/**
+.next/**
