@@ -93,7 +93,7 @@ This is an example of how to list things you need to use the software and how to
    ```
 2. Install NPM packages for server
    ```sh
-   cd apps/api/server/ && yarn install
+   cd apps/api/ && yarn install
    ```
 3. Rename .env.sample to .env and update configuration
 
@@ -186,7 +186,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Mudassar Ali - [@your_twitter](https://twitter.com/mudassarali) - mudassar.ali@gmail.com
+Mudassar Ali - [@mudassarali](https://twitter.com/mudassarali) - mudassar.ali@gmail.com
 
 Project Link: [https://github.com/mudiman/todo-mern-dt](https://github.com/mudiman/todo-mern-dt)
 
